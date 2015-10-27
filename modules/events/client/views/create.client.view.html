@@ -1,0 +1,83 @@
+<section ng-controller="CreateEventController">
+  <div class="row">
+    <div class="small-12 large-8 large-offset-2 columns">
+      <div class="row">
+        <div class="small-12 columns">
+          <a data-ui-sref="events">&lt; Back to Events</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="alert-box alert radius" ng-if="error">
+            {{error}}
+          </div>
+
+          <div class="alert-box success radius" ng-if="success">
+            Successfully created your new event!
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <form ng-submit="save()">
+            <fieldset>
+              <legend>New Event</legend>
+              <div class="row">
+                <div class="small-12 columns">
+                  <label>
+                    Title
+                    <input type="text" ng-model="title" required />
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns">
+                  <label>
+                    Start
+                    <input type="datetime-local" ng-model="start" required />
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns">
+                  <label>
+                    End
+                    <input type="datetime-local" ng-model="end" required />
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns">
+                  <label>
+                    Category
+                    <input type="text" ng-model="category" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns">
+                  <label>
+                    Description
+                    <textarea ng-model="description"></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="small-12 columns">
+                  <input type="submit" ng-disabled="submitting" class="right button" value="Create" />
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+<section ng-controller="EventListController" ng-init="find()">
+  <div class="row">
+    <div class="small-offset-2 small-8 columns">
+      <div class="row">
+        <div class="small-12 columns">
+          <a class="button right" data-ui-sref="events-create">
+            Create Event
+          </a>
+        </div>
+      </div>
+
+      <div class="row event slide" ng-repeat="event in events">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-12 columns">
+              <h2>
+                {{event.title}}
+
+                <span class="category-label info radius label">
+                  {{event.category}}
+                </span>
+              </h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-12 columns">
+              <div ng-if="isStarted(event.start) && !isEnded(event.start)">
+                <span class="label radius success">This event has started.</span>
+              </div>
+              <div ng-if="isEnded(event.end)">
+                <span class="label radius alert">This event has ended.</span>
+              </div>
+              <div class="row">
+                <div class="small-2 columns">
+                  <label class="right">
+                    Start:
+                  </label>
+                </div>
+
+                <div class="small-10 columns">
+                  {{event.start | date:dateFormat}} at {{event.start | date:timeFormat}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-2 columns">
+                  <label class="right">
+                    End:
+                  </label>
+                </div>
+
+                <div class="small-10 columns">
+                  {{event.end | date:dateFormat}} at {{event.end | date:timeFormat}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-12 columns">
+              <div class="panel">
+                {{event.description}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-6 columns">
+              <a href="/events/{{event._id}}/edit">Edit</a>
+              |
+              <a ng-click="delete(event)">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
