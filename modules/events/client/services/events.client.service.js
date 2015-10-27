@@ -18,9 +18,10 @@ angular.module('events').factory('Events', ['$resource',
     return $resource('api/events/:eventId', {eventId: '@_id'},
       {
         query: {
+          isArray: true,
           transformResponse: function(response) {
             var data = angular.fromJson(response),
-                i, len;
+                j, flen, i, len;
 
             for (i = 0, len = data.length; i < len; ++i) {
               for (j = 0, flen = FIELDS.length; j < flen; ++j) {
